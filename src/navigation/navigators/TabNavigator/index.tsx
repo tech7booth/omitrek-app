@@ -33,7 +33,7 @@ function TabNavigator() {
               iconName = focused ? 'gift' : 'gift-outline';
               break;
             case 'ShoppingBagTab':
-              iconName = focused ? 'bag-personal' : 'bag-personal-outline';
+              iconName = focused ? 'shopping' : 'shopping-outline';
               break;
           }
 
