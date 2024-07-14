@@ -1,5 +1,8 @@
 import {NavigatorScreenParams} from '@react-navigation/native';
-import {NativeStackScreenProps} from '@react-navigation/native-stack';
+import {
+  NativeStackNavigationProp,
+  NativeStackScreenProps,
+} from '@react-navigation/native-stack';
 
 export type TStackNavigationRoutes = {
   SplashScreen: undefined;
@@ -17,3 +20,5 @@ export type TTabNavigationRoutes = {
 export type TStackNavigationScreenProps<
   T extends keyof TStackNavigationRoutes,
 > = NativeStackScreenProps<TStackNavigationRoutes, T>;
+
+export type TUseNavigation = NativeStackNavigationProp<TStackNavigationRoutes>;
