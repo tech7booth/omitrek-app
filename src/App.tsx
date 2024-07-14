@@ -1,18 +1,22 @@
-import {StatusBar} from 'react-native';
-import {SafeAreaProvider} from 'react-native-safe-area-context';
+import {SafeAreaView} from 'react-native-safe-area-context';
 import RootNavigation from './navigation/RootNavigation';
+import {StatusBar, StyleSheet} from 'react-native';
 
 function App() {
-  // Update Statusbar
+  StatusBar.setBackgroundColor('#FFF');
   StatusBar.setBarStyle('dark-content');
-  StatusBar.setBackgroundColor('transparent');
-  StatusBar.setTranslucent(true);
 
   return (
-    <SafeAreaProvider>
+    <SafeAreaView style={styles.rootContainer}>
       <RootNavigation />
-    </SafeAreaProvider>
+    </SafeAreaView>
   );
 }
+
+const styles = StyleSheet.create({
+  rootContainer: {
+    flex: 1,
+  },
+});
 
 export default App;

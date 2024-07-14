@@ -1,3 +1,4 @@
+import AppHeader from '@app/components/shared/AppHeader';
 import {lightTheme} from '@app/constants/colors';
 import {
   AccountTab,
@@ -15,6 +16,9 @@ const Tab = createBottomTabNavigator<TTabNavigationRoutes>();
 function TabNavigator() {
   return (
     <Tab.Navigator
+      sceneContainerStyle={{
+        backgroundColor: '#FFF',
+      }}
       screenOptions={({route}) => ({
         tabBarIcon: ({color, focused}) => {
           let iconName = '';
@@ -49,7 +53,7 @@ function TabNavigator() {
         tabBarStyle: {
           height: 81,
         },
-        headerShown: false,
+        header: () => <AppHeader />,
       })}>
       <Tab.Screen name="HomeTab" component={HomeTab} />
       <Tab.Screen name="GiftsTab" component={GiftsTab} />
