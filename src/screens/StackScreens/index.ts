@@ -1,3 +1,5 @@
 import SplashScreen from './SplashScreen';
+import AddressScreen from './AddressScreen';
+import CreateNewAddressScreen from './CreateNewAddressScreen';
 
-export {SplashScreen};
+export {SplashScreen, AddressScreen, CreateNewAddressScreen};

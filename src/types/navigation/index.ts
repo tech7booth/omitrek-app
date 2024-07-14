@@ -6,6 +6,8 @@ import {
 
 export type TStackNavigationRoutes = {
   SplashScreen: undefined;
+  AddressScreen: undefined;
+  CreateNewAddressScreen: undefined;
   HomeScreen: NavigatorScreenParams<TTabNavigationRoutes>;
 };
 
