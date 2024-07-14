@@ -59,7 +59,11 @@ function TabNavigator() {
       <Tab.Screen name="GiftsTab" component={GiftsTab} />
       <Tab.Screen name="FavouritesTab" component={FavouritesTab} />
       <Tab.Screen name="ShoppingBagTab" component={ShoppingBagTab} />
-      <Tab.Screen name="AccountTab" component={AccountTab} />
+      <Tab.Screen
+        name="AccountTab"
+        component={AccountTab}
+        options={{headerShown: false}}
+      />
     </Tab.Navigator>
   );
 }
