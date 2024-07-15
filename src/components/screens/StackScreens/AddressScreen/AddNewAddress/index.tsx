@@ -12,7 +12,7 @@ function AddressNewAddress() {
 
   return (
     <View style={styles.container}>
-      <Button onPress={handlePress} size={18}>
+      <Button onPress={handlePress} size={18} variant="text">
         + ADD NEW ADDRESS
       </Button>
     </View>

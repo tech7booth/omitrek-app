@@ -11,35 +11,30 @@ type Props = {
   align?: TextStyle['textAlign'];
 } & Required<PropsWithChildren>;
 
-function Button({
-  children,
-  onPress,
-  variant = 'text',
-  titleColor,
-  size,
-  align,
-}: Props) {
+function Button(props: Props) {
   return (
     <View style={styles.container}>
       <Pressable
-        onPress={onPress}
+        onPress={props.onPress}
         style={[
           styles.button,
-          variant === 'contained' ? styles.containedButton : styles.textButton,
+          props.variant === 'contained'
+            ? styles.containedButton
+            : styles.textButton,
         ]}
         android_ripple={{borderless: false}}>
         <Typography
-          size={size}
-          align={align}
+          size={props.size}
+          align={props.align}
           color={
-            titleColor
-              ? titleColor
-              : variant === 'text'
+            props.titleColor
+              ? props.titleColor
+              : props.variant === 'text'
               ? lightTheme.primaryGreen
               : '#FFF'
           }
           bold={'700'}>
-          {children}
+          {props.children}
         </Typography>
       </Pressable>
     </View>

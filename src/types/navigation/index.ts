@@ -9,6 +9,8 @@ export type TStackNavigationRoutes = {
   AddressScreen: undefined;
   CreateNewAddressScreen: undefined;
   OrdersScreen: undefined;
+  RegisterScreen: undefined;
+  LoginScreen: undefined;
   HomeScreen: NavigatorScreenParams<TTabNavigationRoutes>;
 };
 

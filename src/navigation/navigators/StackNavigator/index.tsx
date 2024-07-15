@@ -1,6 +1,8 @@
 import {
   AddressScreen,
   CreateNewAddressScreen,
+  LoginScreen,
+  RegisterScreen,
   SplashScreen,
 } from '@app/screens/StackScreens';
 import {TStackNavigationRoutes} from '@app/types/navigation';
@@ -45,6 +47,16 @@ function StackNavigator() {
         name="OrdersScreen"
         component={OrdersScreen}
         options={{headerTitle: 'Your Orders'}}
+      />
+      <Stack.Screen
+        name="RegisterScreen"
+        component={RegisterScreen}
+        options={{headerTitle: 'Create New Account'}}
+      />
+      <Stack.Screen
+        name="LoginScreen"
+        component={LoginScreen}
+        options={{headerTitle: 'Login'}}
       />
     </Stack.Navigator>
   );
