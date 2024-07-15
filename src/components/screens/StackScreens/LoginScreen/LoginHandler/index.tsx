@@ -4,24 +4,28 @@ import {StyleSheet, View} from 'react-native';
 import LoginButton from './LoginButton';
 
 export type TLoginUserData = {
-  email: string;
+  phoneNo: string;
   password: string;
 };
 
 function LoginHandler() {
-  const emailRef = useRef<InputRef>(null);
+  const phoneNoRef = useRef<InputRef>(null);
   const passwordRef = useRef<InputRef>(null);
 
   function getData(): Partial<TLoginUserData> {
     return {
-      email: emailRef.current?.getValue(),
+      phoneNo: phoneNoRef.current?.getValue(),
       password: passwordRef.current?.getValue(),
     };
   }
 
   return (
     <View style={styles.container}>
-      <Input ref={emailRef} placeholder="Enter Email*" />
+      <Input
+        ref={phoneNoRef}
+        placeholder="Enter Phone Number*"
+        inputMode="tel"
+      />
       <Input ref={passwordRef} placeholder="Enter Password*" />
       <LoginButton getUserData={getData} />
     </View>

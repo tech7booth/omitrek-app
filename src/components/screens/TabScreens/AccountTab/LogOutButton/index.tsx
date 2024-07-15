@@ -1,10 +1,15 @@
 import Typography from '@app/components/common/Typography';
 import {lightTheme} from '@app/constants/colors';
+import {TUseNavigation} from '@app/types/navigation';
+import {useNavigation} from '@react-navigation/native';
 import React from 'react';
 import {Pressable, StyleSheet, View} from 'react-native';
 
 function LogOutButton() {
-  function handleLogout() {}
+  const navigation = useNavigation<TUseNavigation>();
+  function handleLogout() {
+    navigation.navigate('RegisterScreen');
+  }
 
   return (
     <View style={styles.rootContainer}>
