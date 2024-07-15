@@ -1,5 +1,5 @@
 import React, {PropsWithChildren} from 'react';
-import {Pressable, StyleSheet, TextStyle, ViewStyle} from 'react-native';
+import {Pressable, StyleSheet, TextStyle, View} from 'react-native';
 import Typography from '../Typography';
 import {lightTheme} from '@app/constants/colors';
 
@@ -20,34 +20,40 @@ function Button({
   align,
 }: Props) {
   return (
-    <Pressable
-      onPress={onPress}
-      style={[
-        styles.button,
-        variant === 'contained' ? styles.containedButton : styles.textButton,
-      ]}>
-      <Typography
-        size={size}
-        align={align}
-        color={
-          titleColor
-            ? titleColor
-            : variant === 'text'
-            ? lightTheme.primaryGreen
-            : '#FFF'
-        }
-        bold={'700'}>
-        {children}
-      </Typography>
-    </Pressable>
+    <View style={styles.container}>
+      <Pressable
+        onPress={onPress}
+        style={[
+          styles.button,
+          variant === 'contained' ? styles.containedButton : styles.textButton,
+        ]}
+        android_ripple={{borderless: false}}>
+        <Typography
+          size={size}
+          align={align}
+          color={
+            titleColor
+              ? titleColor
+              : variant === 'text'
+              ? lightTheme.primaryGreen
+              : '#FFF'
+          }
+          bold={'700'}>
+          {children}
+        </Typography>
+      </Pressable>
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
+  container: {
+    borderRadius: 12,
+    overflow: 'hidden',
+  },
   button: {
     paddingHorizontal: 24,
     paddingVertical: 12,
-    borderRadius: 12,
   },
   containedButton: {
     backgroundColor: lightTheme.primaryGreen,
