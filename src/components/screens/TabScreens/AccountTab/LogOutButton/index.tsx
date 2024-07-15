@@ -12,7 +12,7 @@ function LogOutButton() {
         style={styles.container}
         onPress={handleLogout}
         android_ripple={{borderless: false}}>
-        <Typography size={20} bold={'bold'}>
+        <Typography size={20} bold={'bold'} color="#000">
           Log Out
         </Typography>
       </Pressable>
