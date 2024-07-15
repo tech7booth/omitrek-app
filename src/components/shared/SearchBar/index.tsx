@@ -55,7 +55,7 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'row',
     alignItems: 'center',
-    paddingHorizontal: 10,
+    paddingLeft: 10,
     borderRadius: 12,
   },
   outline: {
@@ -67,7 +67,7 @@ const styles = StyleSheet.create({
   },
   textInput: {
     marginLeft: 12,
-    marginRight: 24,
+    flex: 1,
   },
   filterButton: {
     width: 54,
