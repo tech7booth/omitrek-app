@@ -53,9 +53,16 @@ function TabNavigator() {
         tabBarStyle: {
           height: 81,
         },
-        header: () => <AppHeader />,
+        headerShown: false,
       })}>
-      <Tab.Screen name="HomeTab" component={HomeTab} />
+      <Tab.Screen
+        name="HomeTab"
+        component={HomeTab}
+        options={{
+          header: () => <AppHeader />,
+          headerShown: true,
+        }}
+      />
       <Tab.Screen name="GiftsTab" component={GiftsTab} />
       <Tab.Screen name="FavouritesTab" component={FavouritesTab} />
       <Tab.Screen name="ShoppingBagTab" component={ShoppingBagTab} />
