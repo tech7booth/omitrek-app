@@ -1,11 +1,11 @@
-import ProductsSearchBar from '@app/components/screens/TabScreens/HomeTab/ProductsSearchBar';
+import ProductsSearch from '@app/components/screens/TabScreens/HomeTab/ProductsSearch';
 import ShopSections from '@app/components/screens/TabScreens/HomeTab/ShopSections';
 import {StyleSheet, View} from 'react-native';
 
 function HomeTab() {
   return (
     <View style={styles.container}>
-      <ProductsSearchBar />
+      <ProductsSearch />
       <ShopSections />
     </View>
   );

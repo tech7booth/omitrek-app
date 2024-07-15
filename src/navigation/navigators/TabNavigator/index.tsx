@@ -64,7 +64,14 @@ function TabNavigator() {
         }}
       />
       <Tab.Screen name="GiftsTab" component={GiftsTab} />
-      <Tab.Screen name="FavouritesTab" component={FavouritesTab} />
+      <Tab.Screen
+        name="FavouritesTab"
+        component={FavouritesTab}
+        options={{
+          header: () => <AppHeader />,
+          headerShown: true,
+        }}
+      />
       <Tab.Screen name="ShoppingBagTab" component={ShoppingBagTab} />
       <Tab.Screen
         name="AccountTab"

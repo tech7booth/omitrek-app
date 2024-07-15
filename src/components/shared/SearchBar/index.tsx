@@ -1,10 +1,23 @@
 import {lightTheme} from '@app/constants/colors';
-import {useState} from 'react';
+import {useDebounce} from '@app/hooks/useDebounce';
+import {Dispatch, SetStateAction, useEffect, useState} from 'react';
 import {Pressable, StyleSheet, TextInput, View} from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
-function ProductsSearchBar() {
+type Props = {
+  placeholder?: string;
+  setValue: Dispatch<SetStateAction<string>>;
+};
+
+function SearchBar({placeholder, setValue}: Props) {
   const [query, setQuery] = useState('');
+  const debouncedValue = useDebounce(query);
+
+  useEffect(() => {
+    console.log('Effect render');
+
+    setValue(debouncedValue);
+  }, [debouncedValue, setValue]);
 
   return (
     <View style={styles.rootContainer}>
@@ -12,7 +25,7 @@ function ProductsSearchBar() {
         <MaterialCommunityIcons name="magnify" size={24} />
         <TextInput
           onChangeText={e => setQuery(e)}
-          placeholder="Search for Products"
+          placeholder={placeholder}
           style={styles.textInput}
         />
       </View>
@@ -50,4 +63,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default ProductsSearchBar;
+export default SearchBar;
