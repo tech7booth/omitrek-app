@@ -3,7 +3,7 @@ import {lightTheme} from '@app/constants/colors';
 import {
   AccountTab,
   FavouritesTab,
-  GiftsTab,
+  CouponsTab,
   HomeTab,
   ShoppingBagTab,
 } from '@app/screens/TabScreens';
@@ -33,7 +33,7 @@ function TabNavigator() {
             case 'AccountTab':
               iconName = focused ? 'account' : 'account-outline';
               break;
-            case 'GiftsTab':
+            case 'CouponsTab':
               iconName = focused ? 'gift' : 'gift-outline';
               break;
             case 'ShoppingBagTab':
@@ -63,7 +63,7 @@ function TabNavigator() {
           headerShown: true,
         }}
       />
-      <Tab.Screen name="GiftsTab" component={GiftsTab} />
+      <Tab.Screen name="CouponsTab" component={CouponsTab} />
       <Tab.Screen
         name="FavouritesTab"
         component={FavouritesTab}

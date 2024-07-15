@@ -14,7 +14,7 @@ export type TStackNavigationRoutes = {
 
 export type TTabNavigationRoutes = {
   HomeTab: undefined;
-  GiftsTab: undefined;
+  CouponsTab: undefined;
   FavouritesTab: undefined;
   ShoppingBagTab: undefined;
   AccountTab: undefined;

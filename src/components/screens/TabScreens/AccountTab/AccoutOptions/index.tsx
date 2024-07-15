@@ -27,7 +27,9 @@ function AccountOptions() {
       <Option
         icon="gift-outline"
         title="Your Coupon"
-        onPress={() => navigation.navigate('HomeScreen', {screen: 'GiftsTab'})}
+        onPress={() =>
+          navigation.navigate('HomeScreen', {screen: 'CouponsTab'})
+        }
       />
       <Option icon="settings" type="Material" title="Setting" />
       <Option icon="information-outline" title="About Us" />
