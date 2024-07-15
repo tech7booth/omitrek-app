@@ -6,22 +6,31 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 
 type Props = {
   placeholder?: string;
+  variant?: 'outline';
+  showFilterButton?: boolean;
   setValue: Dispatch<SetStateAction<string>>;
 };
 
-function SearchBar({placeholder, setValue}: Props) {
+function SearchBar({
+  placeholder,
+  setValue,
+  variant,
+  showFilterButton = true,
+}: Props) {
   const [query, setQuery] = useState('');
   const debouncedValue = useDebounce(query);
 
   useEffect(() => {
-    console.log('Effect render');
-
     setValue(debouncedValue);
   }, [debouncedValue, setValue]);
 
   return (
     <View style={styles.rootContainer}>
-      <View style={styles.container}>
+      <View
+        style={[
+          styles.container,
+          variant === 'outline' ? styles.outline : styles.contained,
+        ]}>
         <MaterialCommunityIcons name="magnify" size={24} />
         <TextInput
           onChangeText={e => setQuery(e)}
@@ -29,9 +38,11 @@ function SearchBar({placeholder, setValue}: Props) {
           style={styles.textInput}
         />
       </View>
-      <Pressable style={styles.filterButton}>
-        <MaterialCommunityIcons name="text" size={37} color={'white'} />
-      </Pressable>
+      {showFilterButton && (
+        <Pressable style={styles.filterButton}>
+          <MaterialCommunityIcons name="text" size={37} color={'white'} />
+        </Pressable>
+      )}
     </View>
   );
 }
@@ -45,8 +56,14 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     paddingHorizontal: 10,
-    backgroundColor: lightTheme.grey,
     borderRadius: 12,
+  },
+  outline: {
+    borderWidth: 1,
+    borderColor: 'rgba(0,0,0, 0.14)',
+  },
+  contained: {
+    backgroundColor: lightTheme.grey,
   },
   textInput: {
     marginLeft: 12,

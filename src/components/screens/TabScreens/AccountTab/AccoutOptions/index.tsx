@@ -7,7 +7,11 @@ function AccountOptions() {
 
   return (
     <>
-      <Option icon="purse-outline" title="Your Order" />
+      <Option
+        icon="purse-outline"
+        title="Your Order"
+        onPress={() => navigation.navigate('OrdersScreen')}
+      />
       <Option
         icon="book-open-page-variant-outline"
         title="Address Book"

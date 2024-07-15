@@ -7,6 +7,7 @@ import {TStackNavigationRoutes} from '@app/types/navigation';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import TabNavigator from '../TabNavigator';
 import AppHeaderBackButton from '@app/components/common/AppHederBackButton';
+import OrdersScreen from '@app/screens/StackScreens/OrdersScreen';
 
 const Stack = createNativeStackNavigator<TStackNavigationRoutes>();
 
@@ -39,6 +40,11 @@ function StackNavigator() {
         name="CreateNewAddressScreen"
         component={CreateNewAddressScreen}
         options={{headerTitle: 'Add New Address'}}
+      />
+      <Stack.Screen
+        name="OrdersScreen"
+        component={OrdersScreen}
+        options={{headerTitle: 'Your Orders'}}
       />
     </Stack.Navigator>
   );
