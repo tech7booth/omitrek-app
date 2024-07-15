@@ -1,4 +1,5 @@
 import AccountOptions from '@app/components/screens/TabScreens/AccountTab/AccoutOptions';
+import LogOutButton from '@app/components/screens/TabScreens/AccountTab/LogOutButton';
 import UserProfile from '@app/components/screens/TabScreens/AccountTab/UserProfile';
 import {StyleSheet, View} from 'react-native';
 
@@ -7,6 +8,7 @@ function AccountTab() {
     <View style={styles.container}>
       <UserProfile />
       <AccountOptions />
+      <LogOutButton />
     </View>
   );
 }
