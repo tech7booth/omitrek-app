@@ -1,4 +1,4 @@
 export const lightTheme = {
-  primaryGreen: '#23B05B',
-  grey: '#D9D9D9',
+  primaryGreen: 'hsla(144, 67%, 41%, 1)',
+  grey: 'hsla(0, 0%, 85%, 1)',
 };
