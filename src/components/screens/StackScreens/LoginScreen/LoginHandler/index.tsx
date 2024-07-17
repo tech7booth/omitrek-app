@@ -2,6 +2,7 @@ import Input, {InputRef} from '@app/components/common/Input';
 import {useRef} from 'react';
 import {StyleSheet, View} from 'react-native';
 import LoginButton from './LoginButton';
+import DontHaveAnAccount from './DontHaveAnAccount';
 
 export type TLoginUserData = {
   phoneNo: string;
@@ -27,6 +28,7 @@ function LoginHandler() {
         inputMode="tel"
       />
       <Input ref={passwordRef} placeholder="Enter Password*" />
+      <DontHaveAnAccount />
       <LoginButton getUserData={getData} />
     </View>
   );

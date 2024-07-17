@@ -1,14 +1,20 @@
+import authService from '@app/api/AuthService';
 import Typography from '@app/components/common/Typography';
 import {lightTheme} from '@app/constants/colors';
-import {TUseNavigation} from '@app/types/navigation';
-import {useNavigation} from '@react-navigation/native';
+import useStore from '@app/store/store';
 import React from 'react';
 import {Pressable, StyleSheet, View} from 'react-native';
 
 function LogOutButton() {
-  const navigation = useNavigation<TUseNavigation>();
-  function handleLogout() {
-    navigation.navigate('RegisterScreen');
+  const removeUser = useStore(state => state.removeUser);
+
+  async function handleLogout() {
+    try {
+      await authService.deleteUserSession();
+      removeUser();
+    } catch (e) {
+      // ...ignore
+    }
   }
 
   return (
