@@ -18,6 +18,28 @@ type TLoginResponse = {
 
 class AuthService extends ApiService {
   /**
+   * Register a new user
+   */
+  async createNewAccount(
+    name: string,
+    phone: string,
+    password: string,
+    referCode?: string,
+  ) {
+    try {
+      /** NOTE: Login and Register endpoints returns same payload data */
+      const response = await this.api.post<TLoginResponse>('/v/register', {
+        phone: +phone,
+        name,
+        password,
+        referredBy: referCode ?? '',
+      });
+      return response.data;
+    } catch (e) {
+      throw e;
+    }
+  }
+  /**
    * Phone No and Password based login
    */
   async loginWithPhoneAndPassword(phone: string, password: string) {
