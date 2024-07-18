@@ -8,6 +8,7 @@ import {ToastAndroid} from 'react-native';
 import {useState} from 'react';
 import Spinner from 'react-native-loading-spinner-overlay';
 import {lightTheme} from '@app/constants/colors';
+import {AxiosError} from 'axios';
 
 type Props = {
   getUserData: () => Partial<TLoginUserData>;
@@ -37,11 +38,9 @@ function LoginButton({getUserData}: Props) {
       setUser({name, phoneNo: phone, userId: _id, balance});
       navigation.goBack();
     } catch (e) {
-      if (e instanceof Error) {
-        ToastAndroid.show(e.message, ToastAndroid.SHORT);
-      } else {
+      if (e instanceof AxiosError) {
         ToastAndroid.show(
-          'Something Went Wrong! Try again later.',
+          e.response?.data.msg ?? 'Something Went Wrong',
           ToastAndroid.SHORT,
         );
       }

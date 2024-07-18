@@ -44,7 +44,10 @@ function SignUpButton({getUserData}: Props) {
       navigation.popToTop();
     } catch (e) {
       if (e instanceof AxiosError) {
-        ToastAndroid.show(e.response?.data.msg, ToastAndroid.SHORT);
+        ToastAndroid.show(
+          e.response?.data.msg ?? 'Something Went Wrong',
+          ToastAndroid.SHORT,
+        );
       }
     } finally {
       setLoading(false);
