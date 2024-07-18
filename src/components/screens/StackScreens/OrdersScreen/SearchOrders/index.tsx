@@ -8,10 +8,12 @@ function SearchOrders() {
   return (
     <View style={styles.container}>
       <SearchBar
-        setValue={setQuery}
-        placeholder="Search all orders"
         variant="outline"
         showFilterButton={false}
+        props={{
+          placeholder: 'Search your orders',
+          onChangeText: setQuery,
+        }}
       />
     </View>
   );

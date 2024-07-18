@@ -10,6 +10,7 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import TabNavigator from '../TabNavigator';
 import AppHeaderBackButton from '@app/components/common/AppHederBackButton';
 import OrdersScreen from '@app/screens/StackScreens/OrdersScreen';
+import SearchResultsScreen from '@app/screens/StackScreens/SearchResultsScreen';
 
 const Stack = createNativeStackNavigator<TStackNavigationRoutes>();
 
@@ -57,6 +58,11 @@ function StackNavigator() {
         name="LoginScreen"
         component={LoginScreen}
         options={{headerTitle: 'Login'}}
+      />
+      <Stack.Screen
+        name="SearchResultsScreen"
+        component={SearchResultsScreen}
+        options={{headerTitle: 'Results'}}
       />
     </Stack.Navigator>
   );

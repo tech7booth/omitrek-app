@@ -1,29 +1,20 @@
 import {lightTheme} from '@app/constants/colors';
-import {useDebounce} from '@app/hooks/useDebounce';
-import {Dispatch, SetStateAction, useEffect, useState} from 'react';
-import {Pressable, StyleSheet, TextInput, View} from 'react-native';
+import {
+  Pressable,
+  StyleSheet,
+  TextInput,
+  TextInputProps,
+  View,
+} from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
 type Props = {
-  placeholder?: string;
   variant?: 'outline';
   showFilterButton?: boolean;
-  setValue: Dispatch<SetStateAction<string>>;
+  props?: TextInputProps;
 };
 
-function SearchBar({
-  placeholder,
-  setValue,
-  variant,
-  showFilterButton = true,
-}: Props) {
-  const [query, setQuery] = useState('');
-  const debouncedValue = useDebounce(query);
-
-  useEffect(() => {
-    setValue(debouncedValue);
-  }, [debouncedValue, setValue]);
-
+function SearchBar({variant, showFilterButton = true, props}: Props) {
   return (
     <View style={styles.rootContainer}>
       <View
@@ -32,11 +23,7 @@ function SearchBar({
           variant === 'outline' ? styles.outline : styles.contained,
         ]}>
         <MaterialCommunityIcons name="magnify" size={24} />
-        <TextInput
-          onChangeText={e => setQuery(e)}
-          placeholder={placeholder}
-          style={styles.textInput}
-        />
+        <TextInput style={styles.textInput} {...props} />
       </View>
       {showFilterButton && (
         <Pressable style={styles.filterButton}>

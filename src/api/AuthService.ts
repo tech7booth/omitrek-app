@@ -1,20 +1,7 @@
 import EncryptedStorage from 'react-native-encrypted-storage';
 import ApiService from './ApiService';
 import {AUTH_TOKENS_KEY} from '@app/constants/keys';
-import {TGetUserInfoResponse} from '@app/types/api/auth';
-
-type TLoginResponse = {
-  statusCode: number;
-  msg: string;
-  data: {
-    user: {
-      name: string;
-      role: string;
-    };
-    token: string;
-    expiresAt: number;
-  };
-};
+import {TGetUserInfoResponse, TLoginResponse} from '@app/types/api/auth';
 
 class AuthService extends ApiService {
   /**

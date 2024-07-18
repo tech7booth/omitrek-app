@@ -6,7 +6,12 @@ function ShopSearch() {
 
   return (
     <>
-      <SearchBar setValue={setQuery} placeholder="Search for Shops" />
+      <SearchBar
+        props={{
+          placeholder: 'Search for shops',
+          onChangeText: setQuery,
+        }}
+      />
     </>
   );
 }

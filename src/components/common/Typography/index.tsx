@@ -1,5 +1,5 @@
 import {PropsWithChildren} from 'react';
-import {Text, TextStyle} from 'react-native';
+import {Text, TextProps, TextStyle} from 'react-native';
 
 type Props = {
   size?: number;
@@ -7,15 +7,25 @@ type Props = {
   align?: TextStyle['textAlign'];
   bold?: TextStyle['fontWeight'];
   customStyle?: TextStyle;
+  customProps?: TextProps;
 } & PropsWithChildren;
 
-function Typography({size, children, color, align, bold, customStyle}: Props) {
+function Typography({
+  size,
+  children,
+  color,
+  align,
+  bold,
+  customStyle,
+  customProps,
+}: Props) {
   return (
     <Text
       style={[
         {fontSize: size, color, textAlign: align, fontWeight: bold},
         customStyle,
-      ]}>
+      ]}
+      {...customProps}>
       {children}
     </Text>
   );
