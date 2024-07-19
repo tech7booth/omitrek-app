@@ -9,7 +9,7 @@ function ProductsSearch() {
   const navigation = useNavigation<TUseNavigation>();
 
   function handleSubmit() {
-    navigation.navigate('SearchResultsScreen', {query});
+    navigation.push('SearchResultsScreen', {query});
   }
 
   return (

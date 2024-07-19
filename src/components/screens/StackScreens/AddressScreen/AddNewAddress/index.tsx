@@ -7,7 +7,7 @@ function AddressNewAddress() {
   const navigation = useNavigation<TUseNavigation>();
 
   function handlePress() {
-    navigation.navigate('CreateNewAddressScreen');
+    navigation.push('CreateNewAddressScreen');
   }
 
   return (

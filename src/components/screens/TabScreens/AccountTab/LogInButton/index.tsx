@@ -7,7 +7,7 @@ function LogInButton() {
   const navigation = useNavigation<TUseNavigation>();
 
   async function navigateToLoginPage() {
-    navigation.navigate('LoginScreen');
+    navigation.push('LoginScreen');
   }
 
   return (

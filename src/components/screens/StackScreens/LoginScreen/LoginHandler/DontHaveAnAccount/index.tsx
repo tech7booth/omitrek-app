@@ -8,7 +8,7 @@ function DontHaveAnAccount() {
   const navigation = useNavigation<TUseNavigation>();
 
   function handlePress() {
-    navigation.navigate('RegisterScreen');
+    navigation.push('RegisterScreen');
   }
 
   return (

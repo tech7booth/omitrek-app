@@ -14,12 +14,12 @@ function AccountOptions() {
           <Option
             icon="purse-outline"
             title="Your Order"
-            onPress={() => navigation.navigate('OrdersScreen')}
+            onPress={() => navigation.push('OrdersScreen')}
           />
           <Option
             icon="book-open-page-variant-outline"
             title="Address Book"
-            onPress={() => navigation.navigate('AddressScreen')}
+            onPress={() => navigation.push('AddressScreen')}
           />
           <Option
             icon="heart-outline"
