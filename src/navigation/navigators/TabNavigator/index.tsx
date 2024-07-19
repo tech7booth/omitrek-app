@@ -7,6 +7,7 @@ import {
   HomeTab,
   ShoppingBagTab,
 } from '@app/screens/TabScreens';
+import useStore from '@app/store/store';
 import {TTabNavigationRoutes} from '@app/types/navigation';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
@@ -14,6 +15,8 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 const Tab = createBottomTabNavigator<TTabNavigationRoutes>();
 
 function TabNavigator() {
+  const isAuthenticated = useStore(state => state.user.isAuthenticated);
+
   return (
     <Tab.Navigator
       sceneContainerStyle={{
@@ -63,7 +66,9 @@ function TabNavigator() {
           headerShown: true,
         }}
       />
-      <Tab.Screen name="CouponsTab" component={CouponsTab} />
+      {isAuthenticated && (
+        <Tab.Screen name="CouponsTab" component={CouponsTab} />
+      )}
       <Tab.Screen
         name="FavouritesTab"
         component={FavouritesTab}
