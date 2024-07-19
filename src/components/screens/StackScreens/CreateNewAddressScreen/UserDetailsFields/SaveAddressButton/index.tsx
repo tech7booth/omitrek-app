@@ -1,12 +1,15 @@
 import Button from '@app/components/common/Button';
 import {StyleSheet, View} from 'react-native';
 import {TUserAddressFieldsRef} from '..';
+import {useTheme} from '@react-navigation/native';
 
 type Props = {
   getUserDetails: () => TUserAddressFieldsRef;
 };
 
 function SaveAddressButton({getUserDetails}: Props) {
+  const theme = useTheme();
+
   function handlePress() {
     const {nameRef, mobileNoRef, pinCodeRef, addressRef, localityRef} =
       getUserDetails();
@@ -35,7 +38,11 @@ function SaveAddressButton({getUserDetails}: Props) {
   }
 
   return (
-    <View style={styles.container}>
+    <View
+      style={{
+        ...styles.container,
+        backgroundColor: theme.dark ? undefined : '#FFF',
+      }}>
       <Button onPress={handlePress} align="center" variant="contained">
         ADD ADDRESS
       </Button>
@@ -46,7 +53,6 @@ function SaveAddressButton({getUserDetails}: Props) {
 const styles = StyleSheet.create({
   container: {
     marginTop: 'auto',
-    backgroundColor: '#FFF',
     paddingHorizontal: 30,
     paddingVertical: 24,
     paddingBottom: 44,

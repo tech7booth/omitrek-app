@@ -9,7 +9,7 @@ function BuyDetails() {
         <Typography bold={'600'} size={14}>
           Winning Price
         </Typography>
-        <Typography bold={'bold'} size={18} color="#000">
+        <Typography bold={'bold'} size={18}>
           $ 2 Lakhs
         </Typography>
       </View>

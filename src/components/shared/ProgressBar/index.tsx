@@ -1,5 +1,6 @@
+import {useTheme} from '@react-navigation/native';
 import React from 'react';
-import {View, Text, StyleSheet} from 'react-native';
+import {View, StyleSheet} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 
 type Props = {
@@ -8,6 +9,7 @@ type Props = {
 };
 
 const ProgressBar = ({current, total}: Props) => {
+  const theme = useTheme();
   // Calculate the fill percentage
   const percentage = Math.min((current / total) * 100, 100);
 
@@ -18,7 +20,15 @@ const ProgressBar = ({current, total}: Props) => {
           colors={['hsla(144, 67%, 41%, 0.7)', 'hsla(144, 67%, 17%, 0.7)']}
           start={{x: 0, y: 0}}
           end={{x: 1, y: 0}}
-          style={[styles.progressBar, {width: `${percentage}%`}]}
+          style={[
+            styles.progressBar,
+            {
+              width: `${percentage}%`,
+              backgroundColor: theme.dark
+                ? undefined
+                : 'hsla(144, 67%, 41%, 0.3)',
+            },
+          ]}
         />
       </View>
     </View>
@@ -33,7 +43,6 @@ const styles = StyleSheet.create({
   barBackground: {
     width: '100%',
     height: 7,
-    backgroundColor: 'hsla(144, 67%, 41%, 0.3)',
     borderRadius: 10,
     overflow: 'hidden',
   },

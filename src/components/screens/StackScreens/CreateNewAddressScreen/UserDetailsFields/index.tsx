@@ -4,6 +4,7 @@ import {lightTheme} from '@app/constants/colors';
 import Input, {InputRef} from '@app/components/common/Input';
 import {RefObject, useRef} from 'react';
 import SaveAddressButton from './SaveAddressButton';
+import {useTheme} from '@react-navigation/native';
 
 export type TUserAddressFieldsRef = {
   nameRef: RefObject<InputRef>;
@@ -14,6 +15,8 @@ export type TUserAddressFieldsRef = {
 };
 
 function UserDetailsFields() {
+  const theme = useTheme();
+
   const nameRef = useRef<InputRef>(null);
   const mobileNoRef = useRef<InputRef>(null);
   const pinCodeRef = useRef<InputRef>(null);
@@ -30,11 +33,14 @@ function UserDetailsFields() {
     };
   }
 
+  const sectionBgColor = theme.dark ? undefined : '#FFF';
+
   return (
     <>
-      <ScrollView style={styles.container}>
+      <ScrollView
+        style={{backgroundColor: theme.dark ? undefined : lightTheme.grey}}>
         <FieldHeadline headline="CONTACT DETAILS" />
-        <View style={styles.section}>
+        <View style={{...styles.section, backgroundColor: sectionBgColor}}>
           <Input ref={nameRef} placeholder="Name*" />
           <Input
             ref={mobileNoRef}
@@ -45,7 +51,7 @@ function UserDetailsFields() {
         </View>
 
         <FieldHeadline headline="ADDRESS" />
-        <View style={styles.section}>
+        <View style={{...styles.section, backgroundColor: sectionBgColor}}>
           <Input
             ref={pinCodeRef}
             placeholder="Pin Code*"
@@ -65,11 +71,7 @@ function UserDetailsFields() {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    backgroundColor: lightTheme.grey,
-  },
   section: {
-    backgroundColor: '#FFF',
     paddingHorizontal: 30,
     paddingVertical: 22,
     gap: 12,
