@@ -21,8 +21,7 @@ function ProductsItem({data}: Props) {
       <Typography
         bold={'light'}
         customProps={{numberOfLines: 1}}
-        customStyle={styles.title}
-        color="#000">
+        customStyle={styles.title}>
         {data.name}
       </Typography>
       <View style={styles.priceContainer}>

@@ -22,12 +22,10 @@ function Option({icon, onPress, title, type = 'Community'}: Props) {
         )}
       </View>
       <View style={styles.textContainer}>
-        <Typography size={18} color="#000">
-          {title}
-        </Typography>
+        <Typography size={18}>{title}</Typography>
       </View>
       <View>
-        <MaterialIcons name="arrow-forward-ios" size={18} color={'#000'} />
+        <MaterialIcons name="arrow-forward-ios" size={18} />
       </View>
     </Pressable>
   );

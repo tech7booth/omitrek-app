@@ -1,3 +1,4 @@
+import {useTheme} from '@react-navigation/native';
 import {PropsWithChildren} from 'react';
 import {Text, TextProps, TextStyle} from 'react-native';
 
@@ -19,10 +20,13 @@ function Typography({
   customStyle,
   customProps,
 }: Props) {
+  const theme = useTheme();
+
+  const textColor = color !== undefined ? color : theme.colors.text;
   return (
     <Text
       style={[
-        {fontSize: size, color, textAlign: align, fontWeight: bold},
+        {fontSize: size, color: textColor, textAlign: align, fontWeight: bold},
         customStyle,
       ]}
       {...customProps}>

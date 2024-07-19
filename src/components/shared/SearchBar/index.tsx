@@ -1,4 +1,5 @@
 import {lightTheme} from '@app/constants/colors';
+import {useTheme} from '@react-navigation/native';
 import {
   Pressable,
   StyleSheet,
@@ -15,12 +16,23 @@ type Props = {
 };
 
 function SearchBar({variant, showFilterButton = true, props}: Props) {
+  const theme = useTheme();
+
   return (
     <View style={styles.rootContainer}>
       <View
         style={[
           styles.container,
-          variant === 'outline' ? styles.outline : styles.contained,
+          theme.dark
+            ? styles.outline
+            : variant === 'outline'
+            ? styles.outline
+            : styles.contained,
+          {
+            borderColor: theme.dark
+              ? 'hsl(204.26, 100%, 90.78%)'
+              : 'hsla(0, 0%, 0%, 0.14)',
+          },
         ]}>
         <MaterialCommunityIcons name="magnify" size={24} />
         <TextInput style={styles.textInput} {...props} />
@@ -47,7 +59,6 @@ const styles = StyleSheet.create({
   },
   outline: {
     borderWidth: 1,
-    borderColor: 'rgba(0,0,0, 0.14)',
   },
   contained: {
     backgroundColor: lightTheme.grey,

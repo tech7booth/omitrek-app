@@ -11,18 +11,21 @@ import TabNavigator from '../TabNavigator';
 import AppHeaderBackButton from '@app/components/common/AppHederBackButton';
 import OrdersScreen from '@app/screens/StackScreens/OrdersScreen';
 import SearchResultsScreen from '@app/screens/StackScreens/SearchResultsScreen';
+import {useTheme} from '@react-navigation/native';
 
 const Stack = createNativeStackNavigator<TStackNavigationRoutes>();
 
 function StackNavigator() {
+  const theme = useTheme();
+
   return (
     <Stack.Navigator
       screenOptions={{
         headerShown: true,
-        contentStyle: {
-          backgroundColor: '#FFF',
-        },
         headerLeft: () => <AppHeaderBackButton />,
+        headerStyle: {
+          backgroundColor: theme.colors.background,
+        },
       }}>
       <Stack.Screen
         name="SplashScreen"

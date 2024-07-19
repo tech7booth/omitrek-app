@@ -10,18 +10,17 @@ import {
 import useStore from '@app/store/store';
 import {TTabNavigationRoutes} from '@app/types/navigation';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+import {useTheme} from '@react-navigation/native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
 const Tab = createBottomTabNavigator<TTabNavigationRoutes>();
 
 function TabNavigator() {
   const isAuthenticated = useStore(state => state.user.isAuthenticated);
+  const theme = useTheme();
 
   return (
     <Tab.Navigator
-      sceneContainerStyle={{
-        backgroundColor: '#FFF',
-      }}
       screenOptions={({route}) => ({
         tabBarIcon: ({color, focused}) => {
           let iconName = '';
@@ -55,6 +54,7 @@ function TabNavigator() {
         tabBarShowLabel: false,
         tabBarStyle: {
           height: 81,
+          backgroundColor: theme.colors.background,
         },
         headerShown: false,
       })}>

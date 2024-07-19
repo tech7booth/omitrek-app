@@ -1,6 +1,7 @@
 import {Ref, forwardRef, useImperativeHandle, useState} from 'react';
 import {StyleSheet, TextInput, TextInputProps} from 'react-native';
 import Typography from '../Typography';
+import {useTheme} from '@react-navigation/native';
 
 export type InputRef = {
   getValue: () => string;
@@ -10,6 +11,7 @@ export type InputRef = {
 function Input(props: TextInputProps, ref: Ref<InputRef>) {
   const [value, setValue] = useState(props.defaultValue ?? '');
   const [error, setError] = useState('');
+  const theme = useTheme();
 
   useImperativeHandle(ref, () => ({
     getValue: () => value,
@@ -27,7 +29,14 @@ function Input(props: TextInputProps, ref: Ref<InputRef>) {
       <TextInput
         value={value}
         onChangeText={setValue}
-        style={styles.input}
+        style={[
+          styles.input,
+          {
+            borderColor: theme.dark
+              ? 'hsl(204.26, 100%, 90.78%)'
+              : 'hsla(0, 0%, 0%, 0.14)',
+          },
+        ]}
         onFocus={() => setError('')}
         {...props}
       />
@@ -44,7 +53,6 @@ const styles = StyleSheet.create({
   input: {
     borderWidth: 1,
     paddingHorizontal: 12,
-    borderColor: 'rgba(0, 0, 0, 0.14)',
     borderRadius: 6,
   },
 });
