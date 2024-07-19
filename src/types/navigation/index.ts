@@ -12,6 +12,7 @@ export type TStackNavigationRoutes = {
   RegisterScreen: undefined;
   LoginScreen: undefined;
   SearchResultsScreen: {query: string};
+  SettingsScreen: undefined;
   HomeScreen: NavigatorScreenParams<TTabNavigationRoutes>;
 };
 

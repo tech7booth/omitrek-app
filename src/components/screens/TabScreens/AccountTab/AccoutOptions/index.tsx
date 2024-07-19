@@ -37,7 +37,12 @@ function AccountOptions() {
           />
         </>
       )}
-      <Option icon="settings" type="Material" title="Setting" />
+      <Option
+        icon="settings"
+        type="Material"
+        title="Setting"
+        onPress={() => navigation.push('SettingsScreen')}
+      />
       <Option icon="information-outline" title="About Us" />
     </>
   );

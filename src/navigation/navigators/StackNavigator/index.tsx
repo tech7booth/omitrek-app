@@ -12,6 +12,7 @@ import AppHeaderBackButton from '@app/components/common/AppHederBackButton';
 import OrdersScreen from '@app/screens/StackScreens/OrdersScreen';
 import SearchResultsScreen from '@app/screens/StackScreens/SearchResultsScreen';
 import {useTheme} from '@react-navigation/native';
+import SettingsScreen from '@app/screens/StackScreens/SettingsScreen';
 
 const Stack = createNativeStackNavigator<TStackNavigationRoutes>();
 
@@ -66,6 +67,11 @@ function StackNavigator() {
         name="SearchResultsScreen"
         component={SearchResultsScreen}
         options={{headerTitle: 'Results'}}
+      />
+      <Stack.Screen
+        name="SettingsScreen"
+        component={SettingsScreen}
+        options={{headerTitle: 'Settings'}}
       />
     </Stack.Navigator>
   );
