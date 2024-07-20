@@ -1,51 +1,18 @@
-import {Ref, forwardRef, useImperativeHandle, useState} from 'react';
 import {StyleSheet, TextInput, TextInputProps} from 'react-native';
-import Typography from '../Typography';
 import {useTheme} from '@react-navigation/native';
 
-export type InputRef = {
-  getValue: () => string;
-  setError: (showError: boolean, message?: string) => void;
-};
-
-function Input(props: TextInputProps, ref: Ref<InputRef>) {
-  const [value, setValue] = useState(props.defaultValue ?? '');
-  const [error, setError] = useState('');
+function Input(props: TextInputProps) {
   const theme = useTheme();
 
-  useImperativeHandle(ref, () => ({
-    getValue: () => value,
-    setError: (showError, message) => {
-      if (showError && message) {
-        setError(message);
-      } else {
-        setError('');
-      }
-    },
-  }));
+  const textInputBorderColor = theme.dark
+    ? 'hsl(204.26, 100%, 90.78%)'
+    : 'hsla(0, 0%, 0%, 0.14)';
 
   return (
-    <>
-      <TextInput
-        value={value}
-        onChangeText={setValue}
-        style={[
-          styles.input,
-          {
-            borderColor: theme.dark
-              ? 'hsl(204.26, 100%, 90.78%)'
-              : 'hsla(0, 0%, 0%, 0.14)',
-          },
-        ]}
-        onFocus={() => setError('')}
-        {...props}
-      />
-      {error.length > 0 && (
-        <Typography size={12} color="red">
-          *{error}
-        </Typography>
-      )}
-    </>
+    <TextInput
+      style={[styles.input, {borderColor: textInputBorderColor}]}
+      {...props}
+    />
   );
 }
 
@@ -57,4 +24,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default forwardRef(Input);
+export default Input;

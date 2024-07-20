@@ -22,6 +22,7 @@ function AddressNewAddress() {
 const styles = StyleSheet.create({
   container: {
     paddingVertical: 50,
+    paddingHorizontal: 15,
   },
 });
 
