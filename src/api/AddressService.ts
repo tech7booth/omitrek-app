@@ -7,8 +7,6 @@ class AddressService extends ApiService {
    * Save User Address
    */
   async saveAddress(address: TUserAddress) {
-    console.log(this.api);
-
     const response = await this.api.post('/v1/addresses', {
       name: address.name,
       phone: +address.mobile,

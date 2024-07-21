@@ -55,6 +55,7 @@ class AuthService extends ApiService {
       const userInfo = await this.api.get<TGetUserInfoResponse>(
         '/v1/user-info',
       );
+
       return userInfo.data;
     } catch (e) {
       throw e;

@@ -1,5 +1,4 @@
 import Button from '@app/components/common/Button';
-import {TLoginUserData} from '..';
 import {useNavigation} from '@react-navigation/native';
 import {TUseNavigation} from '@app/types/navigation';
 import authService from '@app/api/AuthService';
@@ -11,31 +10,27 @@ import {lightTheme} from '@app/constants/colors';
 import {AxiosError} from 'axios';
 
 type Props = {
-  getUserData: () => Partial<TLoginUserData>;
+  phone: string;
+  password: string;
 };
 
-function LoginButton({getUserData}: Props) {
+function LoginButton({phone, password}: Props) {
   const [loading, setLoading] = useState(false);
 
   const setUser = useStore(state => state.setUser);
   const navigation = useNavigation<TUseNavigation>();
 
   async function handleLogin() {
-    const {phoneNo, password} = getUserData();
-
-    if (!phoneNo || !password) {
+    if (!phone || !password) {
       return;
     }
 
     setLoading(true);
     try {
-      const user = await authService.loginWithPhoneAndPassword(
-        phoneNo,
-        password,
-      );
+      const user = await authService.loginWithPhoneAndPassword(phone, password);
 
-      const {name, phone, _id, balance} = user.data;
-      setUser({name, phoneNo: phone, userId: _id, balance});
+      const {name, phone: mobileNumber, _id, balance} = user.data;
+      setUser({name, phoneNo: mobileNumber, userId: _id, balance});
       navigation.goBack();
     } catch (e) {
       if (e instanceof AxiosError) {

@@ -36,6 +36,7 @@ let addressSchema = object({
 
 function UserDetailsFields() {
   const navigation = useNavigation<TUseNavigation>();
+
   const createAddressMutation = useMutation({
     mutationFn: (variables: TUserAddress) =>
       addressService.saveAddress(variables),
@@ -46,6 +47,7 @@ function UserDetailsFields() {
       ToastAndroid.show('Error While Saving Address', ToastAndroid.SHORT);
     },
   });
+
   const theme = useTheme();
   const sectionBgColor = theme.dark ? undefined : '#FFF';
 
