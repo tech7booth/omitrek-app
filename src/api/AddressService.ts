@@ -29,6 +29,18 @@ class AddressService extends ApiService {
     );
     return response.data;
   }
+
+  /**
+   * Delete A Address
+   */
+  async deleteAddressById(addressId: string) {
+    const response = await this.api.delete('/v1/addresses', {
+      params: {
+        addressId,
+      },
+    });
+    return response.data;
+  }
 }
 
 const addressService = new AddressService();

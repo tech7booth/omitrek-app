@@ -1,13 +1,38 @@
+import addressService from '@app/api/AddressService';
+import Button from '@app/components/common/Button';
 import Typography from '@app/components/common/Typography';
 import {lightTheme} from '@app/constants/colors';
 import {TGetUserAddressResponse} from '@app/types/api/address';
-import {StyleSheet, View} from 'react-native';
+import {useMutation, useQueryClient} from '@tanstack/react-query';
+import {AxiosError} from 'axios';
+import {StyleSheet, ToastAndroid, View} from 'react-native';
 
 type Props = {
   data: TGetUserAddressResponse['data'][number];
 };
 
 function AddressItem({data}: Props) {
+  const queryClient = useQueryClient();
+  const deleteAddressMutation = useMutation({
+    mutationFn: (variable: string) =>
+      addressService.deleteAddressById(variable),
+    onSuccess: () => {
+      queryClient.invalidateQueries({queryKey: ['address']});
+    },
+    onError(error) {
+      if (error instanceof AxiosError) {
+        ToastAndroid.show(
+          error.response?.data.msg || 'Something Went Wrong!',
+          ToastAndroid.SHORT,
+        );
+      }
+    },
+  });
+
+  function handleDelete() {
+    deleteAddressMutation.mutate(data._id);
+  }
+
   return (
     <View style={styles.container}>
       <View style={styles.nameContainer}>
@@ -34,6 +59,15 @@ function AddressItem({data}: Props) {
           <Typography bold={'bold'}>{data.phone}</Typography>
         </View>
       </View>
+      <View style={styles.deleteBtnContainer}>
+        <Button
+          variant="contained"
+          align="center"
+          buttonColor="rgb(204,0,0)"
+          onPress={handleDelete}>
+          Delete
+        </Button>
+      </View>
     </View>
   );
 }
@@ -57,6 +91,9 @@ const styles = StyleSheet.create({
   },
   mobileNoContainer: {
     flexDirection: 'row',
+  },
+  deleteBtnContainer: {
+    marginVertical: 10,
   },
 });
 

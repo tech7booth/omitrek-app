@@ -9,6 +9,7 @@ type Props = {
   size?: number;
   onPress?: () => void;
   align?: TextStyle['textAlign'];
+  buttonColor?: string;
 } & Required<PropsWithChildren>;
 
 function Button(props: Props) {
@@ -18,9 +19,13 @@ function Button(props: Props) {
         onPress={props.onPress}
         style={[
           styles.button,
-          props.variant === 'contained'
-            ? styles.containedButton
-            : styles.textButton,
+          {
+            backgroundColor: props.buttonColor
+              ? props.buttonColor
+              : props.variant === 'contained'
+              ? lightTheme.primaryGreen
+              : undefined,
+          },
         ]}
         android_ripple={{borderless: false}}>
         <Typography
@@ -49,9 +54,6 @@ const styles = StyleSheet.create({
   button: {
     paddingHorizontal: 24,
     paddingVertical: 12,
-  },
-  containedButton: {
-    backgroundColor: lightTheme.primaryGreen,
   },
   textButton: {
     paddingHorizontal: 10,
