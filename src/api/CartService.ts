@@ -22,6 +22,14 @@ class CartService extends ApiService {
     const response = await this.api.get<TCartItmesResponse>('/v1/cart');
     return response.data;
   }
+
+  /**
+   * Delete from cart
+   */
+  async deleteItemFromCart(id: string) {
+    const response = await this.api.delete('/v1/cart', {data: {itemId: id}});
+    return response.data;
+  }
 }
 
 const cartService = new CartService();
