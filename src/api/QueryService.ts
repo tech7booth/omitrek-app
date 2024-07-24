@@ -1,4 +1,4 @@
-import {TSearchProductsResponse} from '@app/types/api/query';
+import {TProductInfo, TSearchProductResponse} from '@app/types/api/query';
 import ApiService from './ApiService';
 
 class QueryService extends ApiService {
@@ -6,7 +6,7 @@ class QueryService extends ApiService {
    * Search for products
    */
   async searchProducts(query: string) {
-    const searchResults = await this.api.get<TSearchProductsResponse>(
+    const response = await this.api.get<TSearchProductResponse>(
       '/v/search-products',
       {
         params: {
@@ -14,7 +14,17 @@ class QueryService extends ApiService {
         },
       },
     );
-    return searchResults.data;
+    return response.data;
+  }
+
+  /**
+   * Get Product Details
+   */
+  async getProductDetilsById(productId: string) {
+    const response = await this.api.get<TProductInfo>(
+      `/v/product-info/${productId}`,
+    );
+    return response.data;
   }
 }
 

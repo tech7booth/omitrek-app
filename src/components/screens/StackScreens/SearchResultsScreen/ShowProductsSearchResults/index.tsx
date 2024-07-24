@@ -10,7 +10,7 @@ type Props = {
 };
 
 function ShowProductsSearchResults({query}: Props) {
-  const {isLoading, isError, data} = useQuery({
+  const {isLoading, isError, data, error} = useQuery({
     queryKey: ['productResults', query],
     queryFn: () => queryService.searchProducts(query),
   });
@@ -25,7 +25,7 @@ function ShowProductsSearchResults({query}: Props) {
         />
       )}
 
-      {isError && <SearchResultsError />}
+      {isError && <SearchResultsError errorText={error.message} />}
       {data && <ProductsList data={data.data} />}
     </>
   );

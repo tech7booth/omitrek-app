@@ -13,6 +13,7 @@ import OrdersScreen from '@app/screens/StackScreens/OrdersScreen';
 import SearchResultsScreen from '@app/screens/StackScreens/SearchResultsScreen';
 import {useTheme} from '@react-navigation/native';
 import SettingsScreen from '@app/screens/StackScreens/SettingsScreen';
+import ProductDetailsScreen from '@app/screens/StackScreens/ProductDetailsScreen';
 
 const Stack = createNativeStackNavigator<TStackNavigationRoutes>();
 
@@ -72,6 +73,11 @@ function StackNavigator() {
         name="SettingsScreen"
         component={SettingsScreen}
         options={{headerTitle: 'Settings'}}
+      />
+      <Stack.Screen
+        name="ProductDetialsScreen"
+        component={ProductDetailsScreen}
+        options={{headerTitle: 'Product'}}
       />
     </Stack.Navigator>
   );

@@ -1,9 +1,9 @@
-import {TSearchProductsResponse} from '@app/types/api/query';
+import {TSearchProductResponse} from '@app/types/api/query';
 import {FlatList, StyleSheet} from 'react-native';
 import ProductsItem from './ProductsItem';
 
 type Props = {
-  data: TSearchProductsResponse['data'];
+  data: TSearchProductResponse['data'];
 };
 
 function ProductsList({data}: Props) {
