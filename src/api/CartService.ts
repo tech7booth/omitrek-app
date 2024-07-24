@@ -1,3 +1,4 @@
+import {TCartItmesResponse} from '@app/types/api/cart';
 import ApiService from './ApiService';
 
 class CartService extends ApiService {
@@ -11,6 +12,14 @@ class CartService extends ApiService {
       quantity,
     });
 
+    return response.data;
+  }
+
+  /**
+   * Get cart products
+   */
+  async getCartProducts() {
+    const response = await this.api.get<TCartItmesResponse>('/v1/cart');
     return response.data;
   }
 }

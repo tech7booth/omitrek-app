@@ -14,6 +14,7 @@ export type TStackNavigationRoutes = {
   SearchResultsScreen: {query: string};
   SettingsScreen: undefined;
   ProductDetialsScreen: {productId: string};
+  CartScreen: undefined;
   HomeScreen: NavigatorScreenParams<TTabNavigationRoutes>;
 };
 

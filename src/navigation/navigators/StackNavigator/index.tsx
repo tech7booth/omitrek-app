@@ -4,6 +4,7 @@ import {
   LoginScreen,
   RegisterScreen,
   SplashScreen,
+  CartScreen,
 } from '@app/screens/StackScreens';
 import {TStackNavigationRoutes} from '@app/types/navigation';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
@@ -78,6 +79,11 @@ function StackNavigator() {
         name="ProductDetialsScreen"
         component={ProductDetailsScreen}
         options={{headerTitle: 'Product'}}
+      />
+      <Stack.Screen
+        name="CartScreen"
+        component={CartScreen}
+        options={{headerTitle: 'My Cart'}}
       />
     </Stack.Navigator>
   );

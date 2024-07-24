@@ -1,6 +1,8 @@
 import cartService from '@app/api/CartService';
 import Button from '@app/components/common/Button';
 import {TProductInfo} from '@app/types/api/query';
+import {TUseNavigation} from '@app/types/navigation';
+import {useNavigation} from '@react-navigation/native';
 import {AxiosError} from 'axios';
 import {StyleSheet, ToastAndroid, View} from 'react-native';
 
@@ -10,13 +12,16 @@ type Props = {
 };
 
 function ProductDetailsActionButtons({data, activeItemIndex}: Props) {
+  const navigation = useNavigation<TUseNavigation>();
+
   async function addToCart() {
     try {
-      const response = await cartService.addToCart(
-        data._id,
-        data.variants[activeItemIndex].size,
-      );
-
+      //const response = await cartService.addToCart(
+      //  data._id,
+      //  data.variants[activeItemIndex].size,
+      //);
+      //
+      navigation.push('CartScreen');
       ToastAndroid.show('Item Added to Cart', ToastAndroid.SHORT);
     } catch (e) {
       if (e instanceof AxiosError) {

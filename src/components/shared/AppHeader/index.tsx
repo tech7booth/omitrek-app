@@ -1,10 +1,13 @@
 import AppLogo from '@app/components/common/AppLogo';
 import useStore from '@app/store/store';
+import {TUseNavigation} from '@app/types/navigation';
+import {useNavigation} from '@react-navigation/native';
 import {StyleSheet, View} from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
 function AppHeader() {
   const isAuthenticated = useStore(state => state.user.isAuthenticated);
+  const navigation = useNavigation<TUseNavigation>();
 
   return (
     <View style={styles.container}>
@@ -12,9 +15,19 @@ function AppHeader() {
       <View style={styles.actions}>
         {isAuthenticated && (
           <>
-            <MaterialCommunityIcons name="bell-outline" size={20} />
-            <MaterialCommunityIcons name="cart" size={20} />
-            <MaterialCommunityIcons name="gift-outline" size={20} />
+            {/*<MaterialCommunityIcons name="bell-outline" size={20} />*/}
+            <MaterialCommunityIcons
+              name="cart"
+              size={20}
+              onPress={() => navigation.push('CartScreen')}
+            />
+            <MaterialCommunityIcons
+              name="gift-outline"
+              size={20}
+              onPress={() =>
+                navigation.navigate('HomeScreen', {screen: 'CouponsTab'})
+              }
+            />
           </>
         )}
       </View>
