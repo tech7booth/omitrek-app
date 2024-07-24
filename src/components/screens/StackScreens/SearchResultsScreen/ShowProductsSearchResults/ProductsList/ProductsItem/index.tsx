@@ -36,7 +36,7 @@ function ProductsItem({data}: Props) {
         </Typography>
       </Pressable>
       <ProductPrice originalPrice={data.mrp} discountPrice={data.sp} />
-      <Button variant="contained" align="center">
+      <Button variant="contained" align="center" onPress={handlePress}>
         Add To Cart
       </Button>
     </View>

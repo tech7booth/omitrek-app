@@ -8,7 +8,7 @@ import {ScrollView} from 'react-native';
 import ProductColorVariant from './ProductColorVariant';
 import ProductDetailsSelectSize from './ProductDetailsSelectSize';
 import ProductDetailsExtraDetails from './ProductDetailsExtraDetails';
-import Button from '@app/components/common/Button';
+import ProductDetailsActionButtons from './ProductDetailsActionButtons';
 
 type Props = {
   data: TProductInfo['data'];
@@ -66,12 +66,12 @@ function ProductDetails({data}: Props) {
           <ProductDetailsExtraDetails product={data} />
         </View>
       </ScrollView>
-      <View style={styles.btnContainer}>
-        <Button variant="contained" buttonColor="grey">
-          Wishlist
-        </Button>
-        <Button variant="contained">Add To Bag</Button>
-      </View>
+
+      {/* Action Buttons */}
+      <ProductDetailsActionButtons
+        data={data}
+        activeItemIndex={activeVariantIndex}
+      />
     </>
   );
 }
